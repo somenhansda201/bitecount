@@ -13,6 +13,10 @@ import Chat from "./pages/Chat/Chat";
 import Reports from "./pages/Reports/Reports";
 import Profile from "./pages/Profile/Profile";
 import Settings from "./pages/Settings/Settings";
+import Features from "./pages/Features/Features";
+import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+
 
 function App() {
   return (
@@ -31,6 +35,11 @@ function App() {
       <Route path="/reports" element={<Reports />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/settings" element={<Settings />} />
+      
+      <Route path="/features" element={<Features />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      
     </Routes>
   );
 }
