@@ -1,24 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser, googleLogin } from "../../api/auth";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/footer";
 
 import { motion } from "framer-motion";
+import { GoogleLogin } from "@react-oauth/google";
 
-import {
-  Mail,
-  Lock,
-  Eye,
-  EyeOff,
-  ArrowRight,
-} from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import "./Login.css";
 
 export default function Login() {
   // =========================
   // State
+
   // =========================
 
   const [email, setEmail] = useState("");
@@ -27,6 +24,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   // =========================
   // Login Handler
@@ -47,23 +45,46 @@ export default function Login() {
       return;
     }
 
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    // Backend API will be connected here later
+      const data = await loginUser(email, password);
 
-    setTimeout(() => {
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("token_type", data.token_type);
+
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-      alert("Frontend validation successful!");
-    }, 1500);
+    }
   };
 
+  const handleGoogleLogin = async (credentialResponse) => {
+    if (!credentialResponse.credential) {
+      setError("Google did not return a valid ID token.");
+      return;
+    }
+
+    try {
+      const data = await googleLogin(credentialResponse.credential);
+
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("token_type", data.token_type);
+
+      navigate("/dashboard");
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+    }
+  };
   return (
     <>
       <Navbar />
 
       <section className="login-page">
         <div className="login-container">
-
           {/* ================= Left Side ================= */}
 
           <motion.div
@@ -72,9 +93,7 @@ export default function Login() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="login-badge">
-              🔐 Welcome Back
-            </span>
+            <span className="login-badge">🔐 Welcome Back</span>
 
             <h1>
               Sign in to
@@ -82,9 +101,8 @@ export default function Login() {
             </h1>
 
             <p>
-              Continue your nutrition journey with AI-powered
-              meal tracking, smart recommendations and
-              health analytics.
+              Continue your nutrition journey with AI-powered meal tracking,
+              smart recommendations and health analytics.
             </p>
 
             <div className="login-features">
@@ -106,7 +124,6 @@ export default function Login() {
             <h2>Login</h2>
 
             <form onSubmit={handleLogin}>
-
               {/* Email */}
 
               <div className="input-group">
@@ -137,11 +154,7 @@ export default function Login() {
                   className="password-toggle"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <EyeOff size={18} />
-                  ) : (
-                    <Eye size={18} />
-                  )}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
 
@@ -153,31 +166,20 @@ export default function Login() {
                   Remember Me
                 </label>
 
-                <Link to="#">
-                  Forgot Password?
-                </Link>
+                <Link to="#">Forgot Password?</Link>
               </div>
 
               {/* Error */}
 
-              {error && (
-                <p className="login-error">
-                  {error}
-                </p>
-              )}
+              {error && <p className="login-error">{error}</p>}
 
               {/* Login Button */}
 
-              <button
-                type="submit"
-                className="login-btn"
-                disabled={loading}
-              >
+              <button type="submit" className="login-btn" disabled={loading}>
                 {loading ? "Signing In..." : "Login"}
 
                 {!loading && <ArrowRight size={18} />}
               </button>
-
             </form>
 
             {/* Divider */}
@@ -188,25 +190,22 @@ export default function Login() {
 
             {/* Google Button */}
 
-            <button
-              type="button"
-              className="google-btn"
-            >
-              Continue with Google
-            </button>
+            <div className="google-login">
+              <GoogleLogin
+                onSuccess={handleGoogleLogin}
+                onError={() => {
+                  setError("Google Login Failed.");
+                }}
+              />
+            </div>
 
             {/* Signup */}
 
             <p className="signup-text">
               Don't have an account?
-
-              <Link to="/signup">
-                Create Account
-              </Link>
+              <Link to="/signup">Create Account</Link>
             </p>
-
           </motion.div>
-
         </div>
       </section>
 

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/footer";
+import { registerUser, googleLogin } from "../../api/auth";
+import { GoogleLogin } from "@react-oauth/google";
 
 import { motion } from "framer-motion";
 
@@ -28,6 +29,7 @@ export default function Signup() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -64,16 +66,43 @@ export default function Signup() {
       return;
     }
 
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    // Backend API will be connected in Phase 4
+      await registerUser({
+        name,
+        email,
+        password,
+      });
 
-    setTimeout(() => {
+      alert("Account created successfully!");
+
+      navigate("/login");
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-      alert("Frontend validation successful!");
-    }, 1500);
+    }
   };
 
+  const handleGoogleSignup = async (credentialResponse) => {
+    if (!credentialResponse.credential) {
+      setError("Google did not return a valid ID token.");
+      return;
+    }
+
+    try {
+      const data = await googleLogin(credentialResponse.credential);
+
+      localStorage.setItem("access_token", data.access_token);
+
+      localStorage.setItem("token_type", data.token_type);
+
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -225,9 +254,14 @@ export default function Signup() {
 
             {/* Google */}
 
-            <button type="button" className="google-btn">
-              Continue with Google
-            </button>
+            <div className="google-login">
+              <GoogleLogin
+                onSuccess={handleGoogleSignup}
+                onError={() => {
+                  setError("Google Signup Failed.");
+                }}
+              />
+            </div>
 
             {/* Login */}
 
