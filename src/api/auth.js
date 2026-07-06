@@ -1,4 +1,34 @@
+/**
+ * ------------------------------------------------------------
+ * Authentication API
+ * ------------------------------------------------------------
+ *
+ * Handles communication between the frontend
+ * and FastAPI authentication endpoints.
+ *
+ * Backend Endpoints:
+ * - POST /auth/register
+ * - POST /auth/login
+ * - POST /auth/google
+ *
+ * Uses:
+ * - Fetch API
+ * - JWT Authentication
+ */
 const API_URL = import.meta.env.VITE_API_URL;
+
+/**
+ * Register a new user.
+ *
+ * Sends user registration data
+ * to the FastAPI backend.
+ *
+ * @param {Object} userData
+ * @returns {Promise<Object>}
+ * @throws {Error}
+ */
+
+
 
 export async function registerUser(userData) {
   const response = await fetch(`${API_URL}/auth/register`, {
@@ -17,6 +47,18 @@ export async function registerUser(userData) {
 
   return data;
 }
+
+/**
+ * Login using email and password.
+ *
+ * Sends user credentials
+ * to the backend authentication endpoint.
+ *
+ * @param {string} email
+ * @param {string} password
+ *
+ * @returns {Promise<Object>}
+ */
 
 export async function loginUser(email, password) {
   const body = new URLSearchParams();
@@ -40,6 +82,17 @@ export async function loginUser(email, password) {
 
   return data;
 }
+
+/**
+ * Authenticate using Google OAuth.
+ *
+ * Sends Google ID Token
+ * to the backend for verification.
+ *
+ * @param {string} idToken
+ *
+ * @returns {Promise<Object>}
+ */
 
 export async function googleLogin(idToken) {
   const response = await fetch(`${API_URL}/auth/google`, {

@@ -1,0 +1,410 @@
+.dashboard-hero-card{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:0 auto;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:38px;
+
+    border-radius:24px;
+
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #0ea5e9,
+        #2563eb
+    );
+
+    color:white;
+}
+
+.dashboard-hero-left{
+
+    flex:1;
+
+    min-width:0;
+
+    z-index:2;
+
+}
+
+.dashboard-hero-greeting{
+
+    font-size:17px;
+
+    font-weight:500;
+
+    color:rgba(255,255,255,.92);
+
+    margin-bottom:10px;
+
+}
+
+.dashboard-hero-left h1{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:40px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+    line-height:1.3;
+
+}
+
+.dashboard-hero-left span{
+
+    color:#fff8b5;
+
+}
+
+.dashboard-hero-icon{
+
+    color:#ffd54f;
+
+}
+
+.dashboard-hero-subtitle{
+
+    max-width:620px;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.92);
+
+}
+.dashboard-hero-score{
+
+    z-index:2;
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:1px solid rgba(255,255,255,.18);
+
+}
+
+.dashboard-hero-score h2{
+
+    font-size:64px;
+
+    font-weight:700;
+
+}
+
+.dashboard-hero-score p{
+
+    font-size:18px;
+
+    opacity:.9;
+
+}
+
+.dashboard-hero-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.dashboard-hero-circle-1{
+
+    width:260px;
+
+    height:260px;
+
+    right:-90px;
+
+    top:-70px;
+
+}
+
+.dashboard-hero-circle-2{
+
+    width:150px;
+
+    height:150px;
+
+    right:100px;
+
+    bottom:-70px;
+
+}
+
+.dashboard-hero-circle-3{
+
+    width:70px;
+
+    height:70px;
+
+    right:220px;
+
+    top:25px;
+
+}
+
+
+.dashboard-hero-title{
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:16px 0;
+
+}
+
+.dashboard-hero-title h1{
+
+    margin:0;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    line-height:1.15;
+
+    color:#ffffff;
+
+}
+
+.dashboard-hero-title h1 span{
+
+    color:#fde68a;
+
+}
+
+.dashboard-hero-title-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    line-height:1.15;
+
+    color:#ffffff;
+
+}
+
+.dashboard-hero-title-right span{
+
+    color:#ffffff;
+
+}
+
+.dashboard-hero-dumbbell{
+
+    color:#fbbf24;
+
+    flex-shrink:0;
+
+}
+
+@media (max-width:1024px){
+
+    .dashboard-hero-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:32px;
+
+        padding:32px;
+
+    }
+
+    .dashboard-hero-left{
+
+        max-width:100%;
+
+    }
+
+    .dashboard-hero-score{
+
+        align-self:center;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .dashboard-hero-card{
+
+        padding:28px 22px;
+
+        border-radius:20px;
+
+        text-align:center;
+
+        align-items:center;
+
+    }
+
+    .dashboard-hero-left{
+
+        max-width:100%;
+
+    }
+
+    .dashboard-hero-greeting{
+
+        font-size:16px;
+
+    }
+
+    .dashboard-hero-title{
+
+        justify-content:center;
+
+        font-size:34px;
+
+        line-height:1.25;
+
+    }
+
+    .dashboard-hero-subtitle{
+
+        font-size:16px;
+
+    }
+
+    .dashboard-hero-score{
+
+        width:130px;
+
+        height:130px;
+
+    }
+
+    .dashboard-hero-score h2{
+
+        font-size:54px;
+
+    }
+
+    .dashboard-hero-score p{
+
+        font-size:16px;
+
+    }
+
+}
+
+
+@media (max-width:480px){
+
+    .dashboard-hero-card{
+
+        padding:22px 18px;
+
+    }
+
+    .dashboard-hero-title{
+
+        font-size:28px;
+
+    }
+
+    .dashboard-hero-subtitle{
+
+        font-size:15px;
+
+    }
+
+    .dashboard-hero-score{
+
+        width:110px;
+
+        height:110px;
+
+    }
+
+    .dashboard-hero-score h2{
+
+        font-size:44px;
+
+    }
+
+    .dashboard-hero-score p{
+
+        font-size:14px;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .hero-dumbbell{
+
+        width:28px;
+
+        height:28px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .hero-dumbbell{
+
+        width:24px;
+
+        height:24px;
+
+    }
+
+}

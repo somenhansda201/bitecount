@@ -1,5 +1,22 @@
-import { Routes, Route } from "react-router-dom";
+/**
+ * ------------------------------------------------------------
+ * Main Application Component
+ * ------------------------------------------------------------
+ *
+ * Defines all application routes.
+ *
+ * Responsibilities:
+ * - Public Routes
+ * - Protected Routes
+ * - Authentication
+ * - Dashboard Navigation
+ */
 
+
+
+
+
+import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";

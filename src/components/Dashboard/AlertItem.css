@@ -1,0 +1,55 @@
+.alert-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 20px;
+
+    border-radius:14px;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.alert-item:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(15,23,42,.08);
+
+}
+
+.alert-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.alert-left span{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#334155;
+
+}
+
+.alert-value{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}

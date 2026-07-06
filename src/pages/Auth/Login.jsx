@@ -1,3 +1,14 @@
+/**
+ * Handle email/password login.
+ *
+ * Validates input,
+ * sends credentials to backend,
+ * stores JWT token,
+ * and redirects user.
+ *
+ * @param {Event} e
+ */
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser, googleLogin } from "../../api/auth";
@@ -30,6 +41,17 @@ export default function Login() {
   // Login Handler
   // =========================
 
+  /**
+   * Handle email/password login.
+   *
+   * Validates input,
+   * sends credentials to backend,
+   * stores JWT token,
+   * and redirects user.
+   *
+   * @param {Event} e
+   */
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -52,6 +74,7 @@ export default function Login() {
 
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("token_type", data.token_type);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       navigate("/dashboard");
     } catch (err) {
@@ -60,6 +83,17 @@ export default function Login() {
       setLoading(false);
     }
   };
+
+  /**
+   * Handle Google Sign-In.
+   *
+   * Receives Google credential,
+   * sends it to backend,
+   * stores JWT token,
+   * and redirects user.
+   *
+   * @param {Object} credentialResponse
+   */
 
   const handleGoogleLogin = async (credentialResponse) => {
     if (!credentialResponse.credential) {
@@ -72,6 +106,8 @@ export default function Login() {
 
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("token_type", data.token_type);
+
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       navigate("/dashboard");
     } catch (err) {

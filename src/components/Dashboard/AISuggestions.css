@@ -1,0 +1,207 @@
+.ai-card{
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+
+    min-height:340px;
+
+}
+
+.ai-header{
+
+    margin-bottom:24px;
+
+}
+
+.ai-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.ai-title h2{
+
+    margin:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+.ai-header p{
+
+    margin-top:8px;
+
+    color:#64748b;
+
+    font-size:15px;
+
+}
+
+.ai-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+/* ---------------- */
+
+.suggestion-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid #edf2f7;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+.suggestion-item:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(15,23,42,.08);
+
+}
+
+.suggestion-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.suggestion-icon{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+}
+
+.suggestion-left h4{
+
+    margin:0;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+}
+
+.suggestion-left p{
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    color:#64748b;
+
+}
+
+.suggestion-badge{
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+@media (max-width:768px){
+
+    .ai-card{
+
+        padding:22px;
+
+    }
+
+    .ai-title h2{
+
+        font-size:20px;
+
+    }
+
+    .suggestion-item{
+
+        padding:16px;
+
+    }
+
+    .suggestion-icon{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:22px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .suggestion-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .suggestion-badge{
+
+        margin-left:58px;
+
+    }
+
+}

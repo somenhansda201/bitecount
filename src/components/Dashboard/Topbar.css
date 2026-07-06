@@ -1,0 +1,312 @@
+.dashboard-topbar{
+
+    height:74px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 34px;
+
+    border-bottom:1px solid #edf2f7;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 260px;
+
+    right: 0;
+
+    z-index: 1100;
+
+
+}
+
+/* Left */
+
+.dashboard-topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.dashboard-menu-btn{
+
+    display:none;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#334155;
+
+    transition:.25s;
+
+}
+
+.dashboard-menu-btn:hover{
+
+    background:#f5f7fb;
+
+}
+
+
+
+
+.dashboard-topbar-left h2{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+/* Right */
+
+.dashboard-topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+/* Health Pill */
+
+.dashboard-health-pill{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:10px 18px;
+
+    background:#eafcf0;
+
+    border-radius:999px;
+
+    color:#16a34a;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+.heart-icon{
+
+    color:#ef4444;
+
+}
+
+/* Icons */
+
+.dashboard-icon-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    position:relative;
+
+}
+
+.dashboard-icon-btn:hover{
+
+    background:#f4f4f5;
+
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    top:10px;
+
+    right:10px;
+
+    width:8px;
+
+    height:8px;
+
+    background:#ef4444;
+
+    border-radius:50%;
+
+}
+
+/* Avatar */
+
+.dashboard-profile{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #14b8a6,
+        #0ea5e9
+    );
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+@media (max-width:768px){
+
+    .dashboard-topbar{
+
+        left:0;
+
+        height:68px;
+
+        padding:0 16px;
+
+    }
+
+    .dashboard-topbar-left{
+
+        gap:10px;
+
+    }
+
+    .dashboard-topbar-left h2{
+
+        font-size:22px;
+
+    }
+
+    .dashboard-topbar-right{
+
+        gap:8px;
+
+    }
+
+    .dashboard-profile{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:17px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .dashboard-topbar-left h2{
+
+        font-size:20px;
+
+    }
+
+    .dashboard-icon-btn{
+
+        width:38px;
+        height:38px;
+
+    }
+
+    .dashboard-profile{
+
+        width:38px;
+        height:38px;
+
+        font-size:15px;
+
+    }
+
+}
+
+@media (max-width:1024px){
+
+    .dashboard-topbar{
+
+        left:0;
+
+        padding:0 20px;
+
+    }
+
+    .dashboard-health-pill{
+
+        display:none;
+
+    }
+
+    .dashboard-menu-btn{
+
+        display:flex;
+
+    }
+
+}
+
+@media (min-width:1025px){
+
+    .dashboard-menu-btn{
+
+        display:none;
+
+    }
+
+}

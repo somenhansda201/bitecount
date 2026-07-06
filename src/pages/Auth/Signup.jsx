@@ -1,3 +1,17 @@
+/**
+ * ------------------------------------------------------------
+ * Registration Page
+ * ------------------------------------------------------------
+ *
+ * Allows new users
+ * to create a BiteCount AI account.
+ *
+ * Features:
+ * - Registration
+ * - Password Validation
+ * - Google Sign-Up
+ */
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
@@ -30,6 +44,16 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  /**
+   * Register a new user.
+   *
+   * Performs client-side validation,
+   * sends registration request,
+   * and redirects to Login page.
+   *
+   * @param {Event} e
+   */
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -97,6 +121,8 @@ export default function Signup() {
       localStorage.setItem("access_token", data.access_token);
 
       localStorage.setItem("token_type", data.token_type);
+
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       navigate("/dashboard");
     } catch (err) {
