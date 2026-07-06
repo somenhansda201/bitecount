@@ -1,0 +1,187 @@
+/* ===========================
+   Container
+=========================== */
+
+.chat-input-container{
+
+    background:#ffffff;
+
+    border:1px solid #dbe3ec;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 16px;
+
+    box-shadow:0 8px 25px rgba(15,23,42,.05);
+
+    transition:.25s;
+
+}
+
+.chat-input-container:focus-within{
+
+    border-color:#22c55e;
+
+    box-shadow:0 0 0 4px rgba(34,197,94,.12);
+
+}
+
+/* ===========================
+   Input
+=========================== */
+
+.chat-input-container input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    color:#1f2937;
+
+    background:transparent;
+
+}
+
+.chat-input-container input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/* ===========================
+   Icon Buttons
+=========================== */
+
+.chat-input-icon{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    color:#64748b;
+
+    transition:.25s;
+
+}
+
+.chat-input-icon:hover{
+
+    background:#f5f7fb;
+
+    color:#22c55e;
+
+}
+
+/* ===========================
+   Send
+=========================== */
+
+.chat-send-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#22c55e;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.chat-send-btn:hover{
+
+    background:#16a34a;
+
+    transform:translateY(-2px);
+
+}
+
+.chat-send-btn:active{
+
+    transform:scale(.96);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:768px){
+
+    .chat-input-container{
+
+        padding:10px;
+
+    }
+
+    .chat-input-icon{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .chat-send-btn{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .chat-input-container{
+
+        gap:6px;
+
+    }
+
+    .chat-input-container input{
+
+        font-size:14px;
+
+    }
+
+}

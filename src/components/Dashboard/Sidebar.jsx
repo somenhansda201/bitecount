@@ -15,32 +15,29 @@ import {
 
 import { motion } from "framer-motion";
 import { useSidebar } from "../../context/SidebarContext";
+import { NavLink } from "react-router-dom";
 
 import "./Sidebar.css";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", active: true },
-  { icon: UtensilsCrossed, label: "Food Log" },
-  { icon: BarChart3, label: "Nutrition Analysis" },
-  { icon: TriangleAlert, label: "Deficiency Detection" },
-  { icon: Sparkles, label: "AI Recommendation" },
-  { icon: CalendarDays, label: "Meal Planner" },
-  { icon: MessageSquare, label: "AI Assistant" },
-  { icon: FileText, label: "Health Reports" },
-  { icon: User, label: "Profile" },
-  { icon: Settings, label: "Settings" },
-  { icon: Shield, label: "Admin" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
+  { icon: UtensilsCrossed, label: "Food Log", path: "/foodlog" },
+  { icon: BarChart3, label: "Nutrition Analysis", path: "/nutrition" },
+  { icon: TriangleAlert, label: "Deficiency Detection", path: "/deficiency" },
+  { icon: Sparkles, label: "AI Recommendation", path: "/recommendation" },
+  { icon: CalendarDays, label: "Meal Planner", path: "/mealplanner" },
+  { icon: MessageSquare, label: "AI Assistant", path: "/chat" },
+  { icon: FileText, label: "Health Reports", path: "/reports" },
+  { icon: User, label: "Profile", path: "/profile" },
+  { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
 export default function Sidebar() {
-
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
     <>
-      <aside
-        className={`dashboard-sidebar ${sidebarOpen ? "open" : ""}`}
-      >
+      <aside className={`dashboard-sidebar ${sidebarOpen ? "open" : ""}`}>
         {/* Header */}
 
         <div className="dashboard-sidebar-header">
@@ -64,23 +61,21 @@ export default function Sidebar() {
         <div className="dashboard-sidebar-body">
           <nav className="dashboard-menu">
             {menuItems.map((item, index) => {
-
               const Icon = item.icon;
 
               return (
-                <button
+                <NavLink
                   key={index}
-                  className={`dashboard-menu-item ${
-                    item.active ? "active" : ""
-                  }`}
-                  onClick={() => setSidebarOpen(false)}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `dashboard-menu-item ${isActive ? "active" : ""}`
+                  }
                 >
                   <Icon size={20} />
 
                   <span>{item.label}</span>
-                </button>
+                </NavLink>
               );
-
             })}
           </nav>
         </div>
@@ -88,17 +83,13 @@ export default function Sidebar() {
         {/* Bottom */}
 
         <div className="dashboard-bottom">
-
           <hr className="dashboard-divider" />
 
           <button className="dashboard-logout">
-
             <LogOut size={20} />
 
             <span>Sign Out</span>
-
           </button>
-
         </div>
       </aside>
 

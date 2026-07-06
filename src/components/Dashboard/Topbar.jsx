@@ -1,10 +1,26 @@
 import { Menu, Bell, Moon, HeartPulse } from "lucide-react";
 import { useSidebar } from "../../context/SidebarContext";
+import { useLocation } from "react-router-dom";
 
 import "./Topbar.css";
 
 export default function Topbar() {
+  const location = useLocation();
    const { setSidebarOpen } = useSidebar();
+   const pageTitles = {
+  "/dashboard": "Dashboard",
+  "/foodlog": "Food Log",
+  "/nutrition": "Nutrition Analysis",
+  "/deficiency": "Deficiency Detection",
+  "/recommendation": "AI Recommendation",
+  "/mealplanner": "Meal Planner",
+  "/chat": "AI Assistant",
+  "/reports": "Health Reports",
+  "/profile": "Profile",
+  "/settings": "Settings",
+};
+
+const title = pageTitles[location.pathname] || "Dashboard";
   return (
     <header className="dashboard-topbar">
       {/* Left */}
@@ -14,7 +30,7 @@ export default function Topbar() {
           <Menu size={28} />
         </button>
 
-        <h2>Dashboard</h2>
+        <h2>{title}</h2>
       </div>
 
       {/* Right */}

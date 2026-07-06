@@ -1,0 +1,109 @@
+/* ===========================
+   Suggestion Chips
+=========================== */
+
+.suggestion-chips{
+
+    display:flex;
+
+    gap:12px;
+
+    margin:20px 0 26px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ===========================
+   Chip
+=========================== */
+
+.suggestion-chip{
+
+    padding:12px 20px;
+
+    border:1px solid #dbe3ec;
+
+    border-radius:999px;
+
+    background:#ffffff;
+
+    color:#475569;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    white-space:nowrap;
+
+}
+
+.suggestion-chip:hover{
+
+    background:#22c55e;
+
+    color:#fff;
+
+    border-color:#22c55e;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(34,197,94,.25);
+
+}
+
+.suggestion-chip:active{
+
+    transform:scale(.97);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:768px){
+
+    .suggestion-chips{
+
+        gap:10px;
+
+        margin:18px 0 22px;
+
+    }
+
+    .suggestion-chip{
+
+        font-size:13px;
+
+        padding:10px 16px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .suggestion-chips{
+
+        display:grid;
+
+        grid-template-columns:1fr;
+
+    }
+
+    .suggestion-chip{
+
+        width:100%;
+
+        text-align:left;
+
+        white-space:normal;
+
+    }
+
+}

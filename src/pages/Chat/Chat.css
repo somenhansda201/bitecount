@@ -1,0 +1,71 @@
+/* Chat Page */
+
+.chat-page{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    min-height:0;
+    overflow:hidden;
+}
+
+/* Header */
+
+.chat-header-wrapper{
+
+    flex-shrink:0;
+
+}
+
+/* Chips */
+
+.chat-chips-wrapper{
+
+    margin:18px 0;
+
+    flex-shrink:0;
+
+}
+
+/* Messages */
+
+.chat-messages-wrapper{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding-right:8px;
+
+    scroll-behavior:smooth;
+
+    min-height:0;
+
+}
+
+/* Nice Scrollbar */
+
+.chat-messages-wrapper::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.chat-messages-wrapper::-webkit-scrollbar-thumb{
+
+    background:#d8dee9;
+
+    border-radius:999px;
+
+}
+
+/* Input */
+
+.chat-input-wrapper{
+
+    flex-shrink:0;
+
+    padding-top:18px;
+
+    background:#f5f8fc;
+
+}

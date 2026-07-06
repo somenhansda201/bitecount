@@ -1,0 +1,41 @@
+.chat-messages{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+    margin-top:10px;
+
+    margin-bottom:20px;
+
+    height:55vh;
+
+    overflow-y:auto;
+
+    padding-right:8px;
+
+    scroll-behavior:smooth;
+
+}
+
+.chat-messages::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.chat-messages::-webkit-scrollbar-thumb{
+
+    background:#d1d5db;
+
+    border-radius:999px;
+
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover{
+
+    background:#94a3b8;
+
+}
