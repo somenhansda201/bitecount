@@ -1,0 +1,83 @@
+.search-food-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px;
+
+    border:1px solid #edf2f7;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    margin-bottom:12px;
+
+}
+
+.search-food-item:hover{
+
+    background:#f5f8fc;
+
+}
+
+.search-food-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.search-food-icon{
+
+    font-size:26px;
+
+}
+
+.search-food-item h4{
+
+    margin:0;
+
+    font-size:16px;
+
+}
+
+.search-food-item p{
+
+    margin-top:4px;
+
+    font-size:13px;
+
+    color:#64748b;
+
+}
+
+.search-food-kcal{
+
+    text-align:right;
+
+}
+
+.search-food-kcal span{
+
+    display:block;
+
+    color:#22c55e;
+
+    font-weight:700;
+
+}
+
+.search-food-kcal small{
+
+    color:#64748b;
+
+}

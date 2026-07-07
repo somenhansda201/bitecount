@@ -1,0 +1,19 @@
+.foodlog-layout{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:28px;
+
+}
+
+@media(max-width:1000px){
+
+    .foodlog-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
