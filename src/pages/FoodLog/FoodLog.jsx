@@ -1,9 +1,9 @@
 import Sidebar from "../../components/Dashboard/Sidebar";
 import Topbar from "../../components/Dashboard/Topbar";
-import MealHeader from "../../components/FoodLog/MealHeader";
-import FoodItem from "../../components/FoodLog/FoodItem";
-import MealSection from "../../components/FoodLog/MealSection";
-import FoodSearchPanel from "../../components/FoodLog/FoodSearchPanel";
+import MealHeader from "../../components/Foodlog/MealHeader";
+import FoodItem from "../../components/Foodlog/FoodItem";
+import MealSection from "../../components/Foodlog/MealSection";
+import FoodSearchPanel from "../../components/Foodlog/FoodSearchPanel";
 import "./FoodLog.css";
 
 export default function FoodLog() {
