@@ -1,0 +1,116 @@
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:5000;
+
+}
+
+.food-modal{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+.food-modal h2{
+
+    margin:0;
+
+}
+
+.food-modal select,
+.food-modal input{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    border:1px solid #dbe3ec;
+
+    font-size:15px;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:10px;
+
+}
+
+.cancel-btn{
+
+    background:#e5e7eb;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.add-btn{
+
+    background:#22c55e;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.add-btn:hover{
+
+    background:#16a34a;
+
+}
+
+.selected-meal {
+    padding: 12px 14px;
+    background: #f5f7fb;
+    border: 1px solid #dbe3ec;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+}

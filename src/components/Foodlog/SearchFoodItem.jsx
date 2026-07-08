@@ -7,9 +7,10 @@ export default function SearchFoodItem({
   carbs,
   fat,
   calories,
+  onClick,
 }) {
   return (
-    <div className="search-food-item">
+    <div className="search-food-item"onClick={onClick}>
 
       <div className="search-food-left">
 

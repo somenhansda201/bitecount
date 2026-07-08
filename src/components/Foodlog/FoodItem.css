@@ -81,3 +81,86 @@
     color:#64748b;
 
 }
+
+.food-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* Container */
+.food-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Shared Button Style */
+.edit-btn,
+.remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* Hide text */
+.edit-btn span,
+.remove-btn span {
+  display: none;
+}
+
+/* Icons */
+.edit-btn svg,
+.remove-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.25s ease;
+}
+
+/* Default icon colors */
+.edit-btn {
+  color: #6b7280;
+}
+
+.remove-btn {
+  color: #6b7280;
+}
+
+/* Edit Hover */
+.edit-btn:hover {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+}
+
+/* Delete Hover */
+.remove-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.food-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.food-details p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.micros {
+  font-size: 12px;
+  color: #94a3b8;
+}

@@ -10,10 +10,11 @@ export default function MealSection({
   protein,
   foods,
   onAddFood,
+  onEditFood,
+  onRemoveFood,
 }) {
   return (
     <div className="meal-section">
-
       <MealHeader
         icon={icon}
         title={title}
@@ -23,22 +24,26 @@ export default function MealSection({
       />
 
       <div className="meal-food-list">
-
         {foods.map((food, index) => (
           <FoodItem
-            key={index}
+            key={food.id || index}
             icon={food.icon}
-            name={food.name}
+            name={food.food_name || food.name}
             serving={food.serving}
             protein={food.protein}
             carbs={food.carbs}
             fat={food.fat}
+            fiber={food.fiber}
+            sodium={food.sodium}
+            calcium={food.calcium}
+            iron={food.iron}
+            vitamin_c={food.vitamin_c}
             calories={food.calories}
+            onEdit={() => onEditFood(title, index)}
+            onRemove={() => onRemoveFood(title, index)}
           />
         ))}
-
       </div>
-
     </div>
   );
 }
