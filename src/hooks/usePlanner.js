@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMealPlan } from "../services/mealPlannerService";
+import { getMealPlan } from "../services/MealPlannerService";
 
 export default function useMealPlanner() {
   const [mealPlan, setMealPlan] = useState(null);
