@@ -11,7 +11,7 @@ import BMRCard from "../../components/Profile/BMRCard";
 import TDEECard from "../../components/Profile/TDEECard";
 import WeightGoalCard from "../../components/Profile/WeightGoalCard";
 import useProfile from "../../hooks/userProfile";
-import { ACTIVITY_LEVELS, CONDITIONS } from "../../utils/profile/constants";
+import { ACTIVITY_LEVELS, CONDITIONS } from "../../utils/Profile/constants";
 
 export default function Profile() {
   const {
