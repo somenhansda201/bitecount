@@ -6,8 +6,8 @@ import {
   updateProfile,
 } from "../services/profileService";
 
-import { computeHealth } from "../utils/profile/computeHealth";
-import { bmiCategory } from "../utils/profile/bmiCategory";
+import { computeHealth } from "../utils/Profile/computeHealth";
+import { bmiCategory } from "../utils/Profile/bmiCategory";
 
 export default function useProfile() {
   const [form, setForm] = useState({
