@@ -1,0 +1,93 @@
+.recommend-card{
+
+    margin-top:24px;
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:16px;
+
+    padding:24px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+.recommend-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+    color:#0f172a;
+
+}
+
+.recommend-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+.recommend-item{
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:12px;
+
+    padding:16px;
+
+}
+
+.recommend-item h4{
+
+    color:#22c55e;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.foods{
+
+    color:#334155;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+
+    line-height:1.6;
+
+}
+
+.tip{
+
+    color:#64748b;
+
+    font-size:12px;
+
+    font-style:italic;
+
+}
+
+@media(max-width:768px){
+
+    .recommend-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

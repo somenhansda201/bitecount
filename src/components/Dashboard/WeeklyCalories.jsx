@@ -3,32 +3,19 @@ import {
   BarChart,
   Bar,
   XAxis,
+  YAxis,
   Tooltip,
   CartesianGrid,
-  Legend,
-  ReferenceLine,
 } from "recharts";
 import { Activity } from "lucide-react";
-import { YAxis } from "recharts";
 
 import "./WeeklyCalories.css";
-
-const weeklyData = [
-  { day: "Mon", calories: 1850 },
-  { day: "Tue", calories: 1720 },
-  { day: "Wed", calories: 1940 },
-  { day: "Thu", calories: 1650 },
-  { day: "Fri", calories: 1810 },
-  { day: "Sat", calories: 1980 },
-  { day: "Sun", calories: 1680 },
-];
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div className="calorie-tooltip">
         <h4>{payload[0].payload.day}</h4>
-
         <p>{payload[0].value} kcal</p>
       </div>
     );
@@ -37,11 +24,22 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-export default function WeeklyCalories() {
+export default function WeeklyCalories({
+  weeklyCalories = [],
+}) {
+  const averageCalories =
+    weeklyCalories.length > 0
+      ? Math.round(
+          weeklyCalories.reduce(
+            (sum, day) => sum + day.calories,
+            0
+          ) / weeklyCalories.length
+        )
+      : 0;
+
   return (
     <section className="weekly-calories-card">
       {/* Header */}
-
       <div className="weekly-calories-header">
         <div>
           <div className="weekly-title">
@@ -50,18 +48,20 @@ export default function WeeklyCalories() {
             <h2>Weekly Calories</h2>
           </div>
 
-          <p>Average: 2,041 kcal/day</p>
+          <p>Average: {averageCalories} kcal/day</p>
         </div>
 
-        <span className="week-badge">This Week</span>
+        <span className="week-badge">Last 7 Days</span>
       </div>
 
       {/* Chart */}
-
       <div className="weekly-calories-chart">
-        <ResponsiveContainer width="100%" height={window.innerWidth < 768 ? 260 : 320}>
+        <ResponsiveContainer
+          width="100%"
+          height={window.innerWidth < 768 ? 260 : 320}
+        >
           <BarChart
-            data={weeklyData}
+            data={weeklyCalories}
             margin={{
               top: 10,
               right: 0,
@@ -70,18 +70,31 @@ export default function WeeklyCalories() {
             }}
           >
             <defs>
-              <linearGradient id="calorieGradient" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient
+                id="calorieGradient"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+              >
                 <stop offset="0%" stopColor="#22c55e" />
-
                 <stop offset="100%" stopColor="#86efac" />
               </linearGradient>
             </defs>
-            <XAxis dataKey="day" tickLine={false} axisLine={false} />
+
+            <XAxis
+              dataKey="day"
+              tickLine={false}
+              axisLine={false}
+            />
+
             <YAxis hide />
+
             <Tooltip
               content={<CustomTooltip />}
               cursor={{ fill: "rgba(34,197,94,.08)" }}
             />
+
             <CartesianGrid
               strokeDasharray="4 4"
               vertical={false}

@@ -1,0 +1,113 @@
+.health-card {
+  background: #ffffff;
+  border: 1px solid #e8eef5;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.health-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.health-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.health-btn {
+  height: 52px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #d9e2ec;
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: #334155;
+
+  transition: all .25s ease;
+}
+
+.health-btn:hover {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.12);
+}
+
+
+
+.health-btn.active {
+  background: #f0fdf4;
+
+  border: 1px solid #22c55e;
+
+  color: #16a34a;
+
+  font-weight: 600;
+
+  box-shadow: 0 4px 12px rgba(34,197,94,.12);
+
+  transform: scale(0.98);
+}
+
+.health-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px;
+
+  background: #f8fafc;
+
+  border-radius: 14px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.health-note svg {
+  flex-shrink: 0;
+  color: #f59e0b;
+}
+
+@media (max-width: 900px) {
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

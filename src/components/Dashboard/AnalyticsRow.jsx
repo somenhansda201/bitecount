@@ -3,14 +3,19 @@ import TodaysMacros from "./TodaysMacros";
 
 import "./AnalyticsRow.css";
 
-export default function AnalyticsRow() {
+export default function AnalyticsRow({
+  weeklyCalories,
+  macroDistribution,
+}) {
   return (
     <section className="analytics-row">
+      <WeeklyCalories
+        weeklyCalories={weeklyCalories}
+      />
 
-      <WeeklyCalories />
-
-      <TodaysMacros />
-
+      <TodaysMacros
+        macroDistribution={macroDistribution}
+      />
     </section>
   );
 }

@@ -1,0 +1,16 @@
+.nutrition-header {
+    margin-bottom: 24px;
+}
+
+.nutrition-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-color);
+    margin: 0 0 4px 0;
+}
+
+.nutrition-subtitle {
+    font-size: 14px;
+    color: gray;
+    margin: 0;
+}

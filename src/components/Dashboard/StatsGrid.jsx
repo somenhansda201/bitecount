@@ -11,70 +11,119 @@ import StatsCard from "./StatsCard";
 
 import "./StatsGrid.css";
 
-export default function StatsGrid() {
+export default function StatsGrid({ summary }) {
+  const calculateProgress = (consumed, target) => {
+    if (!target) return 0;
+
+    return Math.min(
+      Math.round((consumed / target) * 100),
+      100
+    );
+  };
+
+  const calculateRemaining = (consumed, target) => {
+    return Math.max(target - consumed, 0);
+  };
+
   return (
     <section className="stats-grid">
-
       <StatsCard
         title="Calories"
-        value="1840"
+        value={summary.calories.consumed}
         unit="kcal"
-        progress={84}
-        remaining="360 kcal left"
+        progress={calculateProgress(
+          summary.calories.consumed,
+          summary.calories.target
+        )}
+        remaining={`${Math.round(
+          calculateRemaining(
+            summary.calories.consumed,
+            summary.calories.target
+          )
+        )} kcal left`}
         color="#22c55e"
         icon={<Flame color="#22c55e" />}
       />
 
       <StatsCard
         title="Protein"
-        value="98"
+        value={summary.protein.consumed}
         unit="g"
-        progress={70}
-        remaining="42 g left"
+        progress={calculateProgress(
+          summary.protein.consumed,
+          summary.protein.target
+        )}
+        remaining={`${calculateRemaining(
+          summary.protein.consumed,
+          summary.protein.target
+        ).toFixed(1)} g left`}
         color="#0ea5e9"
         icon={<Dumbbell color="#0ea5e9" />}
       />
 
       <StatsCard
         title="Carbs"
-        value="210"
+        value={summary.carbs.consumed}
         unit="g"
-        progress={76}
-        remaining="65 g left"
+        progress={calculateProgress(
+          summary.carbs.consumed,
+          summary.carbs.target
+        )}
+        remaining={`${calculateRemaining(
+          summary.carbs.consumed,
+          summary.carbs.target
+        ).toFixed(1)} g left`}
         color="#f59e0b"
         icon={<Wheat color="#f59e0b" />}
       />
 
       <StatsCard
         title="Fat"
-        value="62"
+        value={summary.fat.consumed}
         unit="g"
-        progress={85}
-        remaining="11 g left"
+        progress={calculateProgress(
+          summary.fat.consumed,
+          summary.fat.target
+        )}
+        remaining={`${calculateRemaining(
+          summary.fat.consumed,
+          summary.fat.target
+        ).toFixed(1)} g left`}
         color="#8b5cf6"
         icon={<Beef color="#8b5cf6" />}
       />
 
       <StatsCard
         title="Water"
-        value="1.8"
+        value={summary.water.consumed}
         unit="L"
-        progress={72}
-        remaining="0.7 L left"
+        progress={calculateProgress(
+          summary.water.consumed,
+          summary.water.target
+        )}
+        remaining={`${calculateRemaining(
+          summary.water.consumed,
+          summary.water.target
+        ).toFixed(1)} L left`}
         color="#06b6d4"
         icon={<Droplets color="#06b6d4" />}
       />
 
       <StatsCard
         title="Fiber"
-        value="18"
+        value={summary.fiber.consumed}
         unit="g"
-        progress={72}
-        remaining="7 g left"
+        progress={calculateProgress(
+          summary.fiber.consumed,
+          summary.fiber.target
+        )}
+        remaining={`${calculateRemaining(
+          summary.fiber.consumed,
+          summary.fiber.target
+        ).toFixed(1)} g left`}
         color="#10b981"
         icon={<Leaf color="#10b981" />}
       />
-
     </section>
   );
 }

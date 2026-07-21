@@ -14,6 +14,8 @@ import {
   deleteFoodLog,
 } from "../../api/foodLog";
 
+import { getFoodById } from "../../api/food";
+
 export default function FoodLog() {
   const [breakfastFoods, setBreakfastFoods] = useState([]);
   const [lunchFoods, setLunchFoods] = useState([]);
@@ -22,8 +24,9 @@ export default function FoodLog() {
   // Modal State
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
-  const [selectedMeal, setSelectedMeal] = useState("Breakfast");
-  const [quantity, setQuantity] = useState(100);
+
+  const [quantity, setQuantity] = useState(1);
+  const [selectedUnit, setSelectedUnit] = useState(null);
   const [activeMeal, setActiveMeal] = useState("Breakfast");
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
@@ -81,49 +84,64 @@ export default function FoodLog() {
       console.error("Failed to delete food log:", error);
     }
   };
-  const handleEditFood = (meal, index) => {
-    let food = null;
+  const handleEditFood = async (meal, index) => {
+    let foodLog = null;
 
     switch (meal) {
       case "Breakfast":
-        food = breakfastFoods[index];
+        foodLog = breakfastFoods[index];
         break;
 
       case "Lunch":
-        food = lunchFoods[index];
+        foodLog = lunchFoods[index];
         break;
 
       case "Dinner":
-        food = dinnerFoods[index];
+        foodLog = dinnerFoods[index];
         break;
 
       case "Snacks":
-        food = snackFoods[index];
+        foodLog = snackFoods[index];
         break;
 
       default:
         return;
     }
 
-    // Save selected food
-    setSelectedFood(food);
+    try {
+      // Load the original food from the database
+      const food = await getFoodById(foodLog.food_id);
 
-    // Save active meal
-    setActiveMeal(meal);
+      // Store the full food object (contains units[])
+      setSelectedFood(food);
 
-    // Use quantity from database
-    const grams = Number(food.quantity);
+      // Restore meal
+      setActiveMeal(meal);
 
-    setQuantity(grams || 100);
+      // Restore quantity
+      setQuantity(Number(foodLog.quantity) || 1);
 
-    // Save index
-    setEditIndex(index);
+      // Restore the previously selected unit
+      const unit =
+        food.units?.find((u) => u.name === foodLog.unit) ||
+        food.units?.[0] ||
+        null;
 
-    // Enable edit mode
-    setIsEditing(true);
+      setSelectedUnit(unit);
 
-    // Open modal
-    setModalOpen(true);
+      // Save the FoodLog id so we know which record to update
+      setEditIndex(foodLog.id);
+
+      setIsEditing(true);
+
+      setModalOpen(true);
+    } catch (error) {
+      console.error("Failed to load food for editing:", error);
+      if (error.response) {
+        console.log("Status:", error.response.status);
+        console.log("Data:", error.response.data);
+      }
+    }
   };
   const calculateMealTotals = (foods) => {
     return foods.reduce(
@@ -137,29 +155,36 @@ export default function FoodLog() {
       },
     );
   };
-  const calculateNutrition = (food, quantity) => {
-  const factor = quantity / 100;
+  const calculateNutrition = (food, quantity, unit) => {
+    if (!food || !unit) return null;
+    const grams = quantity * unit.grams;
 
-  return {
-    ...food,
+    const factor = grams / 100;
 
-    quantity,
-    serving: `${quantity} g`,
+    return {
+      ...food,
 
-    calories: Number((food.calories * factor).toFixed(1)),
-    protein: Number((food.protein * factor).toFixed(1)),
-    carbs: Number((food.carbs * factor).toFixed(1)),
-    fat: Number((food.fat * factor).toFixed(1)),
+      quantity,
 
-    fiber: Number((food.fiber * factor).toFixed(1)),
-    sodium: Number((food.sodium * factor).toFixed(1)),
-    calcium: Number((food.calcium * factor).toFixed(1)),
-    iron: Number((food.iron * factor).toFixed(1)),
-    vitamin_c: Number((food.vitamin_c * factor).toFixed(1)),
-    folate: Number((food.folate * factor).toFixed(1)),
+      unit: unit.name,
+
+      grams,
+
+      serving: `${quantity} ${unit.name}`,
+
+      calories: Number((food.calories * factor).toFixed(1)),
+      protein: Number((food.protein * factor).toFixed(1)),
+      carbs: Number((food.carbs * factor).toFixed(1)),
+      fat: Number((food.fat * factor).toFixed(1)),
+
+      fiber: Number((food.fiber * factor).toFixed(1)),
+      sodium: Number((food.sodium * factor).toFixed(1)),
+      calcium: Number((food.calcium * factor).toFixed(1)),
+      iron: Number((food.iron * factor).toFixed(1)),
+      vitamin_c: Number((food.vitamin_c * factor).toFixed(1)),
+      folate: Number((food.folate * factor).toFixed(1)),
+    };
   };
-};
-
   const loadTodayFoodLogs = async () => {
     try {
       const foodLogs = await getTodayFoodLogs();
@@ -179,8 +204,15 @@ export default function FoodLog() {
   };
 
   const handleOpenModal = (food) => {
+    setIsEditing(false);
+    setEditIndex(null);
+
     setSelectedFood(food);
-    setQuantity(100);
+
+    setQuantity(1);
+
+    setSelectedUnit(food.units?.[0] || null);
+
     setModalOpen(true);
   };
   const breakfastTotals = calculateMealTotals(breakfastFoods);
@@ -260,16 +292,38 @@ export default function FoodLog() {
           quantity={quantity}
           isEditing={isEditing}
           setQuantity={setQuantity}
-          onClose={() => setModalOpen(false)}
+          selectedUnit={selectedUnit}
+          setSelectedUnit={setSelectedUnit}
+          onClose={() => {
+            setModalOpen(false);
+
+            setIsEditing(false);
+
+            setEditIndex(null);
+
+            setSelectedFood(null);
+
+            setSelectedUnit(null);
+
+            setQuantity(1);
+          }}
           onAdd={async () => {
-            const updatedFood = calculateNutrition(selectedFood, quantity);
+            const updatedFood = calculateNutrition(
+              selectedFood,
+              quantity,
+              selectedUnit,
+            );
+
+            if (!updatedFood) return;
 
             try {
               if (isEditing) {
                 // We'll connect this to the backend next.
-                await updateFoodLog(updatedFood.id, {
+                await updateFoodLog(editIndex, {
                   quantity: updatedFood.quantity,
+                  unit: updatedFood.unit,
 
+                  grams: updatedFood.grams,
                   calories: updatedFood.calories,
                   protein: updatedFood.protein,
                   carbs: updatedFood.carbs,
@@ -288,9 +342,13 @@ export default function FoodLog() {
                 await createFoodLog({
                   meal: activeMeal,
 
+                  food_id: updatedFood._id,
                   food_name: updatedFood.name,
 
-                  quantity: quantity,
+                  quantity: updatedFood.quantity,
+                  unit: updatedFood.unit,
+
+                  grams: updatedFood.grams,
 
                   calories: updatedFood.calories,
                   protein: updatedFood.protein,
@@ -309,8 +367,16 @@ export default function FoodLog() {
               }
 
               setModalOpen(false);
+
               setIsEditing(false);
+
               setEditIndex(null);
+
+              setSelectedFood(null);
+
+              setSelectedUnit(null);
+
+              setQuantity(1);
             } catch (error) {
               console.error("Failed to save food log:", error);
             }

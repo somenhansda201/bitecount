@@ -1,0 +1,82 @@
+.nutrient-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 24px;
+}
+
+.nutrient-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 24px;
+}
+
+.nutrient-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 30px;
+}
+
+.nutrient-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.nutrient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.nutrient-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nutrient-values {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.badge {
+    color: white;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.remaining-text {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .nutrient-grid {
+        grid-template-columns: 1fr;
+    }
+}

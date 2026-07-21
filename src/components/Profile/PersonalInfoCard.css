@@ -1,0 +1,117 @@
+/* ===========================
+   Personal Information Card
+=========================== */
+
+.personal-card {
+  background: #ffffff;
+  border: 1px solid #e8eef5;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.personal-card-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.personal-card-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* ===========================
+   Form Layout
+=========================== */
+
+.personal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.personal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.personal-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-field.full {
+  grid-column: 1 / -1;
+}
+
+/* ===========================
+   Labels
+=========================== */
+
+.personal-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+.personal-input,
+.personal-select {
+  width: 100%;
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  outline: none;
+
+  transition: all .25s ease;
+}
+
+.personal-input::placeholder {
+  color: #94a3b8;
+}
+
+.personal-input:hover,
+.personal-select:hover {
+  border-color: #b9c6d4;
+}
+
+.personal-input:focus,
+.personal-select:focus {
+  border-color: #22c55e;
+
+  box-shadow: 0 0 0 4px rgba(34,197,94,.15);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 900px) {
+
+  .personal-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -113,3 +113,48 @@ export async function googleLogin(idToken) {
 
   return data;
 }
+
+
+/**
+ * Logout current user.
+ *
+ * Removes JWT token
+ * from browser storage.
+ */
+
+export function logoutUser() {
+
+  localStorage.removeItem("access_token");
+
+}
+
+export async function changePassword(currentPassword, newPassword) {
+
+  const token = localStorage.getItem("access_token");
+
+  const response = await fetch(
+    `${API_URL}/auth/change-password`,
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+
+      body: JSON.stringify({
+        current_password: currentPassword,
+        new_password: newPassword,
+      }),
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.detail);
+  }
+
+  return data;
+
+}

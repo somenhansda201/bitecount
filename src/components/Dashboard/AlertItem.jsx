@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { AlertCircle } from "lucide-react";
-import "./AlertItem.css"
+import "./AlertItem.css";
 
 export default function AlertItem({
   title,
@@ -8,6 +8,7 @@ export default function AlertItem({
   color,
   background,
   border,
+  Icon = AlertCircle,
 }) {
   return (
     <motion.div
@@ -20,9 +21,8 @@ export default function AlertItem({
       }}
     >
       <div className="alert-left">
-        <AlertCircle
+        <Icon
           size={18}
-          fill={color}
           color={color}
         />
 

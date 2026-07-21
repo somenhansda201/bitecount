@@ -13,3 +13,9 @@ export const searchFoods = async (query) => {
 
   return response.data;
 };
+
+export const getFoodById = async (foodId) => {
+  const response = await API.get(`/foods/${foodId}`);
+
+  return response.data;
+};

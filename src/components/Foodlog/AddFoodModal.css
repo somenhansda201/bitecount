@@ -114,3 +114,18 @@
     font-weight: 600;
     color: #334155;
 }
+
+
+.food-subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.serving-info {
+  display: block;
+  margin-top: 6px;
+  color: #16a34a;
+  font-size: 13px;
+  font-weight: 500;
+}

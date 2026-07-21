@@ -216,3 +216,44 @@ font-size:42px;
 }
 
 }
+
+
+.contact-success{
+
+    margin:18px 0;
+
+    padding:14px 16px;
+
+    background:#dcfce7;
+
+    border:1px solid #86efac;
+
+    border-radius:12px;
+
+    color:#166534;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+.contact-error{
+
+    margin:18px 0;
+
+    padding:14px 16px;
+
+    background:#fee2e2;
+
+    border:1px solid #fca5a5;
+
+    border-radius:12px;
+
+    color:#b91c1c;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}

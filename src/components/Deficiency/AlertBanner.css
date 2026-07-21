@@ -1,0 +1,35 @@
+.alert-banner{
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    padding:18px 22px;
+
+    margin-bottom:24px;
+
+    background:#FEF2F2;
+
+    border:1px solid #FECACA;
+
+    border-radius:14px;
+}
+
+.alert-icon{
+    font-size:28px;
+    flex-shrink:0;
+}
+
+.alert-content h3{
+    font-size:16px;
+    font-weight:700;
+    color:#DC2626;
+
+    margin-bottom:4px;
+}
+
+.alert-content p{
+    font-size:13px;
+    color:#EF4444;
+
+    line-height:1.5;
+}

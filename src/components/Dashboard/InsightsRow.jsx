@@ -3,14 +3,15 @@ import AISuggestions from "./AISuggestions";
 
 import "./InsightsRow.css";
 
-export default function InsightsRow() {
+export default function InsightsRow({
+  nutritionAlerts = [],
+  aiSuggestions = [],
+}) {
   return (
     <section className="insights-row">
+      <NutritionAlerts alerts={nutritionAlerts} />
 
-      <NutritionAlerts />
-
-      <AISuggestions />
-
+      <AISuggestions suggestions={aiSuggestions} />
     </section>
   );
 }

@@ -15,7 +15,8 @@ import {
 
 import { motion } from "framer-motion";
 import { useSidebar } from "../../context/SidebarContext";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logoutUser } from "../../api/auth";
 
 import "./Sidebar.css";
 
@@ -34,6 +35,14 @@ const menuItems = [
 
 export default function Sidebar() {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
+
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logoutUser();
+
+    navigate("/login");
+  }
 
   return (
     <>
@@ -85,7 +94,7 @@ export default function Sidebar() {
         <div className="dashboard-bottom">
           <hr className="dashboard-divider" />
 
-          <button className="dashboard-logout">
+          <button className="dashboard-logout" onClick={handleLogout}>
             <LogOut size={20} />
 
             <span>Sign Out</span>

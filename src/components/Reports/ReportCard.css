@@ -1,0 +1,113 @@
+.report-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.report-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.report-card-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.report-card-header.warning svg {
+    color: #eab308;
+}
+
+.report-card-header.success svg {
+    color: #16a34a;
+}
+
+.report-card-header.ai svg {
+    color: #2563eb;
+}
+
+/* ===========================
+   Shared List
+=========================== */
+
+.simple-report-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.simple-report-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.simple-report-list li:last-child {
+    margin-bottom: 0;
+}
+
+.simple-report-list strong {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+/* ===========================
+   Bullet
+=========================== */
+
+.bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bullet.red {
+    background: #ef4444;
+}
+
+.bullet.yellow {
+    background: #facc15;
+}
+
+.bullet.green {
+    background: #22c55e;
+}
+
+.bullet.blue {
+    background: #3b82f6;
+}
+
+/* ===========================
+   Status Colors
+=========================== */
+
+.status-critical {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.status-low {
+    color: #ca8a04;
+    font-weight: 600;
+}
+
+.status-good {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.status-adequate {
+    color: #2563eb;
+    font-weight: 600;
+}
