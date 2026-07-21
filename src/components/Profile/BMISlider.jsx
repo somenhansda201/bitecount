@@ -1,4 +1,4 @@
-import "./BmiSlider.css";
+import "./BMISlider.css";
 
 export default function BmiSlider({ bmi }) {
   const clamp = (value, min, max) =>

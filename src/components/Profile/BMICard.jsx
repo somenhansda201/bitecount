@@ -1,5 +1,5 @@
 import "./BMICard.css";
-import BmiSlider from "./BmiSlider";
+import BmiSlider from "./BMISlider";
 
 export default function BMICard({ health, category }) {
   if (!health) return null;
