@@ -1,6 +1,7 @@
 import "./OverallHealthScore.css";
+import CircularStat from "./CircularStat";
 
-export default function OverallHealthScore({overallHealth}) {
+export default function OverallHealthScore({ overallHealth }) {
   if (!overallHealth) {
     return <div className="overall-health-card">Loading overall health...</div>;
   }
@@ -12,37 +13,29 @@ export default function OverallHealthScore({overallHealth}) {
         <p>Based on your nutrition, health metrics, and dietary patterns.</p>
 
         <div className="health-metrics">
-          <div className="metric">
-            <div className="metric-circle green">
-              <span>{overallHealth.calorie_balance}%</span>
-            </div>
+          <CircularStat
+            value={overallHealth.calorie_balance}
+            color="#22c55e"
+            label="Calorie Balance"
+          />
 
-            <p>Calorie Balance</p>
-          </div>
+          <CircularStat
+            value={overallHealth.protein_goal}
+            color="#0ea5e9"
+            label="Protein Goal"
+          />
 
-          <div className="metric">
-            <div className="metric-circle blue">
-              <span>{overallHealth.protein_goal}%</span>
-            </div>
+          <CircularStat
+            value={overallHealth.micronutrients}
+            color="#f59e0b"
+            label="Micronutrients"
+          />
 
-            <p>Protein Goal</p>
-          </div>
-
-          <div className="metric">
-            <div className="metric-circle orange">
-              <span>{overallHealth.micronutrients}%</span>
-            </div>
-
-            <p>Micronutrients</p>
-          </div>
-
-          <div className="metric">
-            <div className="metric-circle purple">
-              <span>{overallHealth.consistency}%</span>
-            </div>
-
-            <p>Consistency</p>
-          </div>
+          <CircularStat
+            value={overallHealth.consistency}
+            color="#8b5cf6"
+            label="Consistency"
+          />
         </div>
       </div>
 
