@@ -1,45 +1,34 @@
-export default function CircularStat({
-  value,
-  color,
-  label,
-}) {
+export default function CircularStat({ value, color, label }) {
   const radius = 38;
   const stroke = 7;
 
   const normalizedRadius = radius - stroke / 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-
-  const offset =
-    circumference - (value / 100) * circumference;
+  const offset = circumference - (value / 100) * circumference;
 
   return (
     <div className="metric">
-      <svg
-        width="90"
-        height="90"
-        className="progress-ring"
-      >
+      <svg width="90" height="90" className="progress-ring">
         <circle
           className="progress-bg"
-          stroke="#ECECEC"
+          stroke="#e5e7eb"
           strokeWidth={stroke}
-          fill="transparent"
+          fill="none"
           r={normalizedRadius}
           cx="45"
           cy="45"
         />
 
         <circle
+          className="progress-value"
           stroke={color}
           strokeWidth={stroke}
-          fill="transparent"
+          fill="none"
           r={normalizedRadius}
           cx="45"
           cy="45"
-          strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          transform="rotate(-90 45 45)"
         />
 
         <text

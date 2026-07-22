@@ -1,216 +1,157 @@
-.overall-health-card{
+.overall-health-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px 32px;
 
-    gap:40px;
-
-    background:#fff;
-
-    border-radius:24px;
-
-    padding:28px 32px;
-
-    border:1px solid #e5e7eb;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.overall-health-left{
-
-    flex:1;
-
+.overall-health-left {
+  flex: 1;
 }
 
-.overall-health-left h2{
-
-    font-size:30px;
-
-    font-weight:700;
-
-    color:#0f172a;
-
-    margin-bottom:10px;
-
+.overall-health-left h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
 }
 
-.overall-health-left p{
-
-    max-width:560px;
-
-    color:#64748b;
-
-    line-height:1.6;
-
+.overall-health-left p {
+  max-width: 560px;
+  color: #64748b;
+  line-height: 1.6;
 }
 
-.health-metrics{
+/* ===========================
+   Health Metrics
+=========================== */
 
-    margin-top:36px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:24px;
-
-    flex-wrap:wrap;
-
+.health-metrics {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-.metric{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:10px;
-
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.metric p{
-
-    color:#1e293b;
-
-    font-size:15px;
-
-    font-weight:600;
-
+.metric p {
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
 }
 
-.metric-circle{
+/* ===========================
+   Circular Progress
+=========================== */
 
-    width:72px;
-
-    height:72px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#fff;
-
-    font-weight:700;
-
-    font-size:18px;
-
+.progress-ring {
+  width: 90px;
+  height: 90px;
+  transform: rotate(-90deg);
+  overflow: visible;
 }
 
-.green{
-
-    border:6px solid #22c55e;
-
+.progress-bg {
+  fill: none;
+  stroke: #e5e7eb;
 }
 
-.blue{
-
-    border:6px solid #0ea5e9;
-
+.progress-value {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.7s ease;
 }
 
-.orange{
-
-    border:6px solid #f59e0b;
-
+.progress-text {
+  fill: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transform: rotate(90deg);
+  transform-origin: center;
 }
 
-.purple{
+/* ===========================
+   Overall Score
+=========================== */
 
-    border:6px solid #8b5cf6;
-
+.overall-health-right {
+  width: 180px;
+  text-align: center;
 }
 
-.overall-health-right{
-
-    width:180px;
-
-    text-align:center;
-
+.overall-health-right h1 {
+  font-size: 72px;
+  color: #22c55e;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.overall-health-right h1{
-
-    font-size:72px;
-
-    color:#22c55e;
-
-    font-weight:700;
-
-    line-height:1;
-
+.overall-health-right span {
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 20px;
 }
 
-.overall-health-right span{
-
-    display:block;
-
-    margin-top:6px;
-
-    color:#64748b;
-
-    font-size:20px;
-
+.score-badge {
+  margin: 14px auto 0;
+  width: max-content;
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 5px 16px;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
-.score-badge{
-
-    margin:14px auto 0;
-
-    width:max-content;
-
-    background:#dcfce7;
-
-    color:#16a34a;
-
-    padding:4px 16px;
-
-    border-radius:999px;
-
-    font-weight:600;
-
-}
-
+/* ===========================
+   Responsive
+=========================== */
 
 @media (max-width: 992px) {
-
-  .overall-health-card{
+  .overall-health-card {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .overall-health-right{
+  .overall-health-right {
     width: 100%;
     text-align: center;
   }
 
-  .health-metrics{
+  .health-metrics {
     justify-content: center;
   }
-
 }
 
-@media (max-width: 576px){
-
-  .health-metrics{
-    gap:16px;
+@media (max-width: 576px) {
+  .health-metrics {
+    gap: 18px;
   }
 
-  .metric-circle{
-    width:60px;
-    height:60px;
-    font-size:16px;
+  .progress-ring {
+    width: 78px;
+    height: 78px;
   }
 
-  .overall-health-right h1{
-    font-size:56px;
+  .overall-health-right h1 {
+    font-size: 56px;
   }
-
 }
