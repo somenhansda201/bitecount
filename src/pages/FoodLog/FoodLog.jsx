@@ -5,6 +5,7 @@ import FoodItem from "../../components/Foodlog/FoodItem";
 import MealSection from "../../components/Foodlog/MealSection";
 import FoodSearchPanel from "../../components/Foodlog/FoodSearchPanel";
 import AddFoodModal from "../../components/Foodlog/AddFoodModal";
+import WaterLogCard from "../../components/Foodlog/WaterLogCard";
 import "./FoodLog.css";
 import { useEffect, useState } from "react";
 import {
@@ -275,6 +276,7 @@ export default function FoodLog() {
                 onEditFood={handleEditFood}
                 onRemoveFood={handleRemoveFood}
               />
+              <WaterLogCard />
             </div>
 
             <div className="foodlog-right">
